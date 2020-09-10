@@ -333,7 +333,9 @@ class Moodle(object):
         else:
             # Defining wwwroot.
             wwwroot = '%s://%s/' % (C.get('scheme'), C.get('behat.host'))
-            if C.get('path') != '' and C.get('path') != None:
+            if C.get('behat.path') != '' and C.get('behat.path') != None:
+                wwwroot = wwwroot + C.get('behat.path') + '/'
+            elif C.get('path') != '' and C.get('path') != None:
                 wwwroot = wwwroot + C.get('path') + '/'
             wwwroot = wwwroot + self.identifier
             currentWwwroot = self.get('behat_wwwroot')
